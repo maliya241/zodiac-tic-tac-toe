@@ -1,0 +1,200 @@
+* {
+	color: #303030;
+}
+
+svg, button, .player_form, #submit_button, h1, h2, p {
+	display: block;
+	width: 80%;
+	margin: auto;
+	padding: auto;
+}
+
+h1, p {
+	text-align: center;
+}
+
+p {
+	font-size: 1.5em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+#turn {
+	font-size: 2em;
+}
+
+h1 {
+	font-size: 2.5em;
+	width: 90%;
+	margin: 0.5em;
+	background-color: #FFFFFF;
+	border-radius: 5em;
+}
+
+h2 {
+	font-size: 2em;
+}
+
+.player_form input {
+	width: 100%;
+}
+
+label, input, button {
+	font-size: 1.5em;
+	padding: 0.25em 0;
+	margin: 0.25em auto;
+	border-radius: 1.5em;
+}
+
+.form {
+	text-align: center;
+}
+
+#reset_button {
+	margin-bottom: 0.5em;
+}
+
+.col {
+	background-color: #FFFFFF;
+	border-radius: 1.5em;
+}
+
+
+
+
+/******************************************************************************
+SVG
+******************************************************************************/
+
+svg {
+	margin: 0.5em auto;
+}
+
+.grid_lines {
+	fill:none;
+	stroke:#303030;
+	stroke-width:50;
+	stroke-linecap:round;
+	stroke-linejoin:round;
+	stroke-miterlimit:10;
+}
+	
+.hide {
+	display:none;
+}
+
+.show {
+	display: inline;
+}
+
+.win_line {
+	opacity: 0.75;
+	fill:none;
+	stroke:#303030;
+	stroke-width:250;
+	stroke-linecap:round;
+	stroke-linejoin:round;
+	stroke-miterlimit:10;
+	stroke-dasharray:12,12,12,12,12,12;
+}
+
+.click_square {
+	display:inline;
+	fill: #FFF;
+	opacity: 0;
+}
+	
+/***********************************
+Animal SVG
+***********************************/
+.outline, .horse_hair {
+	stroke:#303030;
+	stroke-linecap:round;
+	stroke-linejoin:round;
+	stroke-miterlimit:10;
+}
+.outline_thick_stroke, .horse_hair {
+	stroke-width:50;
+}
+
+.outline_thin_stroke {
+	stroke-width:25;
+}
+
+.eyes_and_tiger_stripes {
+	stroke:#303030;
+	stroke-miterlimit:10;
+}
+
+.nose, .boar_head_ears_and_snout {
+	fill:#FDBDFF;
+}
+
+.dog_head_and_ears, .rat_head {
+	fill:#D4D4D4;
+}
+
+.rooster_head_and_ox_horns, .dragon_horns_and_rabbit_head_and_ears, .horse_nose, .ox_and_tiger_mouth {
+	fill:#FFFFFF;
+}
+
+.rooster_wattle_and_comb {
+	fill:#C2272D;
+}
+
+.rooster_beak {
+	fill:#FF9900;
+}
+
+.background_monkey_head, .horse_head_and_sheep_horn {
+	fill:#855200;
+}
+
+.horse_hair, .eyes_and_tiger_stripes {
+	fill:#303030;
+}
+	
+.monkey_ears, .monkey_inner_head, .ox_head {
+	fill:#C97F06;
+}
+
+.monkey_head, .dragon_whiskers_and_sheep_noses, .tiger_head {
+	fill:none;
+}
+	
+.sheep_head {
+	fill:#DECEB4;
+}
+
+.snake_tongue, .dragon_head {
+	fill:#C1272D;
+}
+
+.snake_head {
+	fill:#8CC63F;
+}
+
+.background_tiger_head {
+	fill:#FF7F06;
+}
+	
+.rat_ears, .rat_nose {
+	fill:#FB8CFF;
+}
+
+.cat_head {
+	fill:#F3AB31;
+}	
+
+.click_one_filter {
+	fill: #0F0F0F;
+	opacity: 0.25; 
+}
+
+.click_two_filter {
+	fill: #F0F0F0;
+	opacity: 1; 
+}
+
+
+	
