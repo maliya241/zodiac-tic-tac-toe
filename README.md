@@ -12,5 +12,5 @@ This project is created with:
 ## Access
 https://maliya241.github.io/zodiac-tic-tac-toe/
 
-## Improvements Needed
+## Inprogress
 * Keyboard Accessibility
