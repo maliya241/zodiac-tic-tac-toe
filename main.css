@@ -2,6 +2,12 @@
 	color: #303030;
 }
 
+body {
+	width: 100%; 
+	height: 100%; 
+	background: linear-gradient(rgba(193, 39, 45, 0), rgba(193, 39, 45,255) 90%), url("ZodiacAnimalsBackground.svg"), rgba(193, 39, 45, 0.5);
+}
+
 svg, button, .player_form, #submit_button, h1, h2, p {
 	display: block;
 	width: 80%;
@@ -26,14 +32,25 @@ p {
 h1 {
 	font-size: 2.5em;
 	width: 90%;
-	margin: 0.5em;
-	background-color: #FFFFFF;
+	margin: 0.5em auto;
+	padding: 0.25em;
 	border-radius: 5em;
 }
+
 
 h2 {
 	font-size: 2em;
 }
+
+#description {
+	display: block;
+	width: 90%;
+	margin: 0.5em auto;
+	padding: 0.5em;
+	border-radius: 1.5em;
+	font-size: 1.5em;
+}
+
 
 .player_form input {
 	width: 100%;
@@ -54,12 +71,29 @@ label, input, button {
 	margin-bottom: 0.5em;
 }
 
-.col {
-	background-color: #FFFFFF;
-	border-radius: 1.5em;
+#description, .col, h1 {
+	background-color: #FFFFFF;	
+	opacity: 0.95;
 }
 
+.col {
+	display: block;
+	width: 90%;
+	border-radius: 1.5em;
+	padding: 0.75em;
+	margin: 1em auto;
+	
+}
 
+#submit_button, #reset_button {
+	background-color: rgba(193, 39, 45, 255);
+	color: #FFFFFF;
+	border-color: transparent;
+}
+ #warning_alert {
+	 color: red;
+ }
+ 
 
 
 /******************************************************************************
