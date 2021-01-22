@@ -20,6 +20,12 @@ var player_two_markers = []; //keeps an array of where each marker is placed on 
 var turn = 1; //odd is player 1 and even is player 2
 var won = 0; //0 is game has not been won; 1 is game has been won
 
+window.addEventListener("load", set_up);
+
+/*
+validate_form funtion gets the value from the player birth year form to assign the players their zodiac animal markers. The function ensures there is input in both form fields. It also allow reassignment of markers if the form is resubmitted.
+Executes when submit button has been pressed.
+*/
 function validate_form() {
 	var player_one_input = document.forms["player_assignment_form"]["player_one"].value;
 	var player_two_input = document.forms["player_assignment_form"]["player_two"].value;
@@ -40,6 +46,7 @@ function validate_form() {
 				} else if (click_grid_squares[i].classList.contains("click_two_filter")) {
 					click_grid_squares[i].classList.remove("click_two_filter");
 				}
+				click_grid_squares[i].setAttribute( "aria-pressed", "false");
 			}
 			for (i = 0; i < 8; i++) {
 				if (win_lines[i].classList.contains("show")) {
@@ -53,6 +60,8 @@ function validate_form() {
 			player_two_markers = [];
 			document.getElementById("turn").innerHTML = "Turn " + turn + ": Player 1";
 		}
+		document.getElementById("player_one_assignment").classList.remove("hide");
+		document.getElementById("player_two_assignment").classList.remove("hide");
 		//player one assignment
 		if (player_one_input.toLowerCase() === "cat") {
 			player_one = cats;
@@ -165,14 +174,17 @@ function validate_form() {
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: ox";
 			}
 		}
+		
 		document.getElementById("warning_alert").innerHTML = "";
 		document.getElementById("turn").innerHTML = "Turn " + turn + ": Player 1";
 	}
 	return false;
 }
 
-window.addEventListener("load", set_up);
-
+/*
+set_up function assigns all the svg elements to variables or arrays
+Executes automatically after the website loads. 
+*/
 function set_up() {
 	var tic_tac_toe_svg = document.getElementById('Noughts_and_Crosses_Grid');
 	//click grid
@@ -239,6 +251,9 @@ function set_up() {
 	click_square();
 }
 
+/*
+click_square function add the event listeners to the grid.
+*/
 function click_square() {
 	click_grid_squares[0].addEventListener("click", function() {grid_square_clicked(0);});
 	click_grid_squares[1].addEventListener("click", function() {grid_square_clicked(1);});
@@ -249,8 +264,78 @@ function click_square() {
 	click_grid_squares[6].addEventListener("click", function() {grid_square_clicked(6);});
 	click_grid_squares[7].addEventListener("click", function() {grid_square_clicked(7);});
 	click_grid_squares[8].addEventListener("click", function() {grid_square_clicked(8);});
+	
+	click_grid_squares[0].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(0);
+		}
+	});
+	click_grid_squares[1].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(1);
+		}
+	});
+	click_grid_squares[2].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(2);
+		}
+	});
+	click_grid_squares[3].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(3);
+		}
+	});
+	click_grid_squares[4].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(4);
+		}
+	});
+	click_grid_squares[5].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(5);
+		}
+	});
+	click_grid_squares[6].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(6);
+		}
+	});
+	click_grid_squares[7].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(7);
+		}
+	});
+	click_grid_squares[8].addEventListener("keydown", e => {
+		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
+			toggle_button(e.target);
+			grid_square_clicked(8);
+		}
+	});
+	
 }
 
+/*
+toggle_button function changes the aria-pressed attribute to true.
+*/
+function toggle_button(ele) {
+  ele.setAttribute(
+    "aria-pressed",
+    ele.getAttribute("aria-pressed") === "true" ? "false" : "true"
+  );
+}
+
+/* 
+grid_square_clicked function shows the marker that corresponds to the grid square that the user selected or does nothing if the game has ended. Executes win function afterwards.
+Executes when the a user has clicked on a grid square.
+*/
 function grid_square_clicked(clicked_square) {
 	if (won === 1) {
 		
@@ -276,97 +361,101 @@ function grid_square_clicked(clicked_square) {
 	win();
 }
 
+/*
+win function determines if a player has won or it is a tie. If there is a winner, a line that crosses the three winning markers will appear, the turn text will declare the winner, and the won variable will be changed to 1. If there is a tie, the turn text will declare tie, and the won variable will be changed to 1.
+Executes automatically after grid_square_clicked has executed.
+*/
 function win() {
 	if (player_one_markers.includes(0) && player_one_markers.includes(1) && player_one_markers.includes(2)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[0].classList.remove("hide");
 		win_lines[0].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(0) && player_two_markers.includes(1) && player_two_markers.includes(2)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[0].classList.remove("hide");
 		win_lines[0].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_one_markers.includes(3) && player_one_markers.includes(4) && player_one_markers.includes(5)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[1].classList.remove("hide");
 		win_lines[1].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(3) && player_two_markers.includes(4) && player_two_markers.includes(5)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[1].classList.remove("hide");
 		win_lines[1].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_one_markers.includes(6) && player_one_markers.includes(7) && player_one_markers.includes(8)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[2].classList.remove("hide");
 		win_lines[2].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(6) && player_two_markers.includes(7) && player_two_markers.includes(8)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[2].classList.remove("hide");
 		win_lines[2].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_one_markers.includes(0) && player_one_markers.includes(3) && player_one_markers.includes(6)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[3].classList.remove("hide");
 		win_lines[3].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(0) && player_two_markers.includes(3) && player_two_markers.includes(6)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[3].classList.remove("hide");
 		win_lines[3].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_one_markers.includes(1) && player_one_markers.includes(4) && player_one_markers.includes(7)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[4].classList.remove("hide");
 		win_lines[4].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(1) && player_two_markers.includes(4) && player_two_markers.includes(7)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[4].classList.remove("hide");
 		win_lines[4].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_one_markers.includes(2) && player_one_markers.includes(5) && player_one_markers.includes(8)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[5].classList.remove("hide");
 		win_lines[5].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(2) && player_two_markers.includes(5) && player_two_markers.includes(8)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[5].classList.remove("hide");
 		win_lines[5].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_one_markers.includes(0) && player_one_markers.includes(4) && player_one_markers.includes(8)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[6].classList.remove("hide");
 		win_lines[6].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(0) && player_two_markers.includes(4) && player_two_markers.includes(8)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[6].classList.remove("hide");
 		win_lines[6].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_one_markers.includes(2) && player_one_markers.includes(4) && player_one_markers.includes(6)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 1!";
 		win_lines[7].classList.remove("hide");
 		win_lines[7].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (player_two_markers.includes(2) && player_two_markers.includes(4) && player_two_markers.includes(6)) {
 		document.getElementById("turn").innerHTML = "Winner is Player 2!";
 		win_lines[7].classList.remove("hide");
 		win_lines[7].classList.add("show");
-		finish_game();
+		won = 1;
 	} else if (turn === 10) {
 		document.getElementById("turn").innerHTML = "Tie!";
-		finish_game();
+		won = 1;
 	}
 }
 
-function finish_game() {
-	won = 1;
-}
-
+/*
+reset will clear out the grid and set all variables to their intial values so that the game can be restarted anytime the reset button has been pressed.
+Executes when the reset button has been pressed.
+*/
 function reset() {
 	for (i = 0; i < 9; i++) {
 		if (player_one[i].classList.contains("show")) {
@@ -381,6 +470,7 @@ function reset() {
 		} else if (click_grid_squares[i].classList.contains("click_two_filter")) {
 			click_grid_squares[i].classList.remove("click_two_filter");
 		}
+		click_grid_squares[i].setAttribute( "aria-pressed", "false");
 	}
 	for (i = 0; i < 8; i++) {
 		if (win_lines[i].classList.contains("show")) {

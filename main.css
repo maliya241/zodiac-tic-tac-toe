@@ -1,5 +1,6 @@
 * {
 	color: #303030;
+	outline: none;
 }
 
 body {
@@ -73,7 +74,7 @@ label, input, button {
 
 #description, .col, h1 {
 	background-color: #FFFFFF;	
-	opacity: 0.95;
+	opacity: 0.93;
 }
 
 .col {
@@ -90,15 +91,35 @@ label, input, button {
 	color: #FFFFFF;
 	border-color: transparent;
 }
- #warning_alert {
-	 color: red;
- }
+
+#warning_alert {
+	color: red;
+}
  
+#submit_button:focus, #reset_button:focus, #submit_button:hover, #reset_button:hover, .player_form input:focus, .player_form input:hover {
+	background-color: rgba(193, 39, 45, 0.25);
+	color: rgba(193, 39, 45, 255);
+	border: 0.10em solid rgba(193, 39, 45, 255);
+}
+
+#player_one_assignment, #player_two_assignment {
+	border-radius: 0.5em; 
+	padding-top: 0.25em;
+	padding-bottom: 0.25em;
+}
+
+#player_one_assignment {
+	background-color: rgba(15, 15, 15, 0.25);
+}
+
+#player_two_assignment {
+	background-color: #F0F0F0;
+}
 
 
-/******************************************************************************
+/************************************************************************
 SVG
-******************************************************************************/
+************************************************************************/
 
 svg {
 	margin: 0.5em auto;
@@ -134,8 +155,13 @@ svg {
 
 .click_square {
 	display:inline;
-	fill: #FFF;
+	fill: #FFFFFF;
 	opacity: 0;
+}
+
+.click_square:focus, .click_square:hover {
+	fill: rgba(193, 39, 45, 1);
+	opacity: 0.25;
 }
 	
 /***********************************
@@ -220,7 +246,7 @@ Animal SVG
 	fill:#F3AB31;
 }	
 
-.click_one_filter {
+.click_one_filter  {
 	fill: #0F0F0F;
 	opacity: 0.25; 
 }
