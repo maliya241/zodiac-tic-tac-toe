@@ -11,6 +11,7 @@ This project is created with:
 
 ## Features
 * Keyboard accessible
+* Created psuedo button with SVG
 * Calculates Chinese zodiac animal from birth year
 
 ## Access
