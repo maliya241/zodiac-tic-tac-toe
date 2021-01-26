@@ -298,6 +298,7 @@ function set_up() {
 click_square function add the event listeners to the grid.
 */
 function click_square() {
+	//mouse click input
 	click_grid_squares[0].addEventListener("click", function() {grid_square_clicked(0);});
 	click_grid_squares[1].addEventListener("click", function() {grid_square_clicked(1);});
 	click_grid_squares[2].addEventListener("click", function() {grid_square_clicked(2);});
@@ -308,6 +309,7 @@ function click_square() {
 	click_grid_squares[7].addEventListener("click", function() {grid_square_clicked(7);});
 	click_grid_squares[8].addEventListener("click", function() {grid_square_clicked(8);});
 	
+	//touch screen input
 	click_grid_squares[0].addEventListener("touchend", function() {grid_square_clicked(0);});
 	click_grid_squares[1].addEventListener("touchend", function() {grid_square_clicked(1);});
 	click_grid_squares[2].addEventListener("touchend", function() {grid_square_clicked(2);});
@@ -318,6 +320,7 @@ function click_square() {
 	click_grid_squares[7].addEventListener("touchend", function() {grid_square_clicked(7);});
 	click_grid_squares[8].addEventListener("touchend", function() {grid_square_clicked(8);});
 	
+	//keyboard input
 	click_grid_squares[0].addEventListener("keydown", e => {
 		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
 			toggle_button(e.target);
@@ -390,7 +393,7 @@ grid_square_clicked function shows the marker that corresponds to the grid squar
 Executes when the a user has clicked on a grid square.
 */
 function grid_square_clicked(clicked_square) {
-	event.preventDefault(); 
+	event.preventDefault(); //takes care of multiple event listener inputs
 	if (won === 1) {
 		
 	} else if (player_one[clicked_square].classList.contains("hide") && player_two[clicked_square].classList.contains("hide")) { 
