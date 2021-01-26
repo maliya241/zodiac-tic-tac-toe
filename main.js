@@ -27,8 +27,8 @@ validate_form funtion gets the value from the player birth year form to assign t
 Executes when submit button has been pressed.
 */
 function validate_form() {
-	var player_one_input = document.forms["player_assignment_form"]["player_one"].value.trim();
-	var player_two_input = document.forms["player_assignment_form"]["player_two"].value.trim();
+	var player_one_input = document.forms["player_assignment_form"]["player_one"].value.replace(/^\s+|\s+$/gm,'');
+	var player_two_input = document.forms["player_assignment_form"]["player_two"].value.replace(/^\s+|\s+$/gm,'');
 	if (player_one_input === "" || player_two_input === "") {
 		document.getElementById("warning_alert").innerHTML = "Both fields are required. ";
 	} else { 
@@ -390,6 +390,7 @@ grid_square_clicked function shows the marker that corresponds to the grid squar
 Executes when the a user has clicked on a grid square.
 */
 function grid_square_clicked(clicked_square) {
+	event.preventDefault(); 
 	if (won === 1) {
 		
 	} else if (player_one[clicked_square].classList.contains("hide") && player_two[clicked_square].classList.contains("hide")) { 
