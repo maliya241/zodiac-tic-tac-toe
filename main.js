@@ -27,8 +27,8 @@ validate_form funtion gets the value from the player birth year form to assign t
 Executes when submit button has been pressed.
 */
 function validate_form() {
-	var player_one_input = document.forms["player_assignment_form"]["player_one"].value;
-	var player_two_input = document.forms["player_assignment_form"]["player_two"].value;
+	var player_one_input = document.forms["player_assignment_form"]["player_one"].value.trim();
+	var player_two_input = document.forms["player_assignment_form"]["player_two"].value.trim();
 	if (player_one_input === "" || player_two_input === "") {
 		document.getElementById("warning_alert").innerHTML = "Both fields are required. ";
 	} else { 
@@ -58,127 +58,170 @@ function validate_form() {
 			won = 0;
 			player_one_markers = [];
 			player_two_markers = [];
-			document.getElementById("turn").innerHTML = "Turn " + turn + ": Player 1";
 		}
 		document.getElementById("player_one_assignment").classList.remove("hide");
 		document.getElementById("player_two_assignment").classList.remove("hide");
+		document.getElementById("turn").classList.remove("hide");
 		//player one assignment
 		if (player_one_input.toLowerCase() === "cat") {
 			player_one = cats;
 			document.getElementById("player_one_assignment").innerHTML = "Player 1: cat";
+			valid_form();
 		} else {
 			var player_one_input_modulo_12 = Math.abs(2020 - player_one_input) % 12;
 			if (player_one_input_modulo_12 === 0) {
 				//rat
 				player_one = rats;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: rat";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 1) {
 				//boar
 				player_one = boars;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: boar";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 2) {
 				//dog
 				player_one = dogs;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: dog";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 3) {
 				//rooster
 				player_one = roosters;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: rooster";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 4) {
 				//monkey
 				player_one = monkeys;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: monkey";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 5) {
 				//sheep
 				player_one = sheep;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: sheep";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 6) {
 				//horse
 				player_one = horses;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: horse";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 7) {
 				//snake
 				player_one = snakes;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: snake";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 8) {
 				//dragon
 				player_one = dragons;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: dragon";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 9) {
 				//rabbit
 				player_one = rabbits;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: rabbit";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 10) {
 				//tiger
 				player_one = tigers;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: tiger";
+				valid_form();
 			} else if (player_one_input_modulo_12 == 11) {
 				//ox
 				player_one = oxen;
 				document.getElementById("player_one_assignment").innerHTML = "Player 1: ox";
+				valid_form();
+			} else {
+				player_one = null;
+				document.getElementById("player_one_assignment").classList.add("hide");
+				document.getElementById("warning_alert").innerHTML = "Please enter a valid year.";
 			}
 		}
 		//player two assignment
-		if (player_two_input.toLowerCase() === "cat") {
+		if (player_one === null) {
+			player_two = null;
+			document.getElementById("player_two_assignment").classList.add("hide");
+			document.getElementById("turn").classList.add("hide");
+		} else if (player_two_input.toLowerCase() === "cat") {
 			player_two = cats;
 			document.getElementById("player_two_assignment").innerHTML = " Player 2: cat";
+			valid_form();
 		} else {
 			var player_two_input_modulo_12 = Math.abs(2020 - player_two_input) % 12;
 			if (player_two_input_modulo_12 === 0) {
 				//rat
 				player_two = rats;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: rat";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 1) {
 				//boar
 				player_two = boars;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: boar";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 2) {
 				//dog
 				player_two = dogs;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: dog";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 3) {
 				//rooster
 				player_two = roosters;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: rooster";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 4) {
 				//monkey
 				player_two = monkeys;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: monkey";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 5) {
 				//sheep
 				player_two = sheep;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: sheep";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 6) {
 				//horse
 				player_two = horses;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: horse";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 7) {
 				//snake
 				player_two = snakes;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: snake";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 8) {
 				//dragon
 				player_two = dragons;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: dragon";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 9) {
 				//rabbit
 				player_two = rabbits;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: rabbit";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 10) {
 				//tiger
 				player_two = tigers;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: tiger";
+				valid_form();
 			} else if (player_two_input_modulo_12 == 11) {
 				//ox
 				player_two = oxen;
 				document.getElementById("player_two_assignment").innerHTML = " Player 2: ox";
+				valid_form();
+			} else {
+				player_one = null;
+				player_two = null;
+				document.getElementById("player_one_assignment").classList.add("hide");
+				document.getElementById("player_two_assignment").classList.add("hide");
+				document.getElementById("warning_alert").innerHTML = "Please enter a valid year.";
+				document.getElementById("turn").classList.add("hide");
 			}
 		}
-		
-		document.getElementById("warning_alert").innerHTML = "";
-		document.getElementById("turn").innerHTML = "Turn " + turn + ": Player 1";
 	}
 	return false;
+}
+
+function valid_form() {
+	document.getElementById("warning_alert").innerHTML = "";
+	document.getElementById("turn").innerHTML = "Turn " + turn + ": Player 1";
 }
 
 /*
@@ -264,6 +307,16 @@ function click_square() {
 	click_grid_squares[6].addEventListener("click", function() {grid_square_clicked(6);});
 	click_grid_squares[7].addEventListener("click", function() {grid_square_clicked(7);});
 	click_grid_squares[8].addEventListener("click", function() {grid_square_clicked(8);});
+	
+	click_grid_squares[0].addEventListener("touchend", function() {grid_square_clicked(0);});
+	click_grid_squares[1].addEventListener("touchend", function() {grid_square_clicked(1);});
+	click_grid_squares[2].addEventListener("touchend", function() {grid_square_clicked(2);});
+	click_grid_squares[3].addEventListener("touchend", function() {grid_square_clicked(3);});
+	click_grid_squares[4].addEventListener("touchend", function() {grid_square_clicked(4);});
+	click_grid_squares[5].addEventListener("touchend", function() {grid_square_clicked(5);});
+	click_grid_squares[6].addEventListener("touchend", function() {grid_square_clicked(6);});
+	click_grid_squares[7].addEventListener("touchend", function() {grid_square_clicked(7);});
+	click_grid_squares[8].addEventListener("touchend", function() {grid_square_clicked(8);});
 	
 	click_grid_squares[0].addEventListener("keydown", e => {
 		if (e.key === " " || e.key === "Enter" || e.key === "Spacebar") {
